@@ -124,7 +124,7 @@ public class RuleBasedEngine {
         String country = context.getSelectedCountry();
         String returnValue = "";
         
-        /** TODO 8: You will create the logic that handles the user's input during the chatbot's
+        /** You will create the logic that handles the user's input during the chatbot's
          *          'CHOOSE_OPTION' step. The method should check the user's input against
          *          the following options:
          *              A: Return the capital of the currently selected country,
@@ -149,6 +149,24 @@ public class RuleBasedEngine {
          *              The method should break the line after each punctuation with a '\n'.
          *              Use if-else if- else statements to handle different cases.
          **/
+        if (userInput.equalsIgnoreCase("A")) {
+            returnValue = "The capital of " + country + " is " + chatbotService.getCapital(country) + ".\n" + COUNTRY_OPTIONS_STRING;
+        } else if (userInput.equalsIgnoreCase("B")) {
+            returnValue = "The national animal of " + country + " is " + chatbotService.getNationalAnimal(country) + ".\n" + COUNTRY_OPTIONS_STRING;
+        } else if (userInput.equalsIgnoreCase("C")) {
+            returnValue = "The national flower of " + country + " is " + chatbotService.getNationalFlower(country) + ".\n" + COUNTRY_OPTIONS_STRING;
+        } else if (userInput.equalsIgnoreCase("D")) {
+            returnValue = "The capital of " + country + " is " + chatbotService.getCapital(country) + ".\n" +
+                    "The national animal of " + country + " is " + chatbotService.getNationalAnimal(country) + ".\n" +
+                    "The national flower of " + country + " is " + chatbotService.getNationalFlower(country) + ".\n" +
+                    COUNTRY_OPTIONS_STRING;
+        } else if (userInput.equalsIgnoreCase("E")) {
+            context.setCurrentStep("SELECT_COUNTRY");
+            returnValue = "What country do you want to learn about?";
+        } else {
+            context.setCurrentStep("SELECT_COUNTRY");
+            returnValue = "I do not understand. \nPlease choose one of the following:\n" + COUNTRY_OPTIONS_STRING;
+        }
 
 
          return  returnValue;

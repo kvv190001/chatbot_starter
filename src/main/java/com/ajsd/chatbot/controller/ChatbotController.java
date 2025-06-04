@@ -58,11 +58,11 @@ public class ChatbotController {
             context.clear();
             return "Conversation has been reset.";
         }  else {
-            /** TODO 9: Set the value of the variable "response"
+            /** Set the value of the variable "response"
              *          to the value returned by the processUserInput method of the RuleBasedEngine class.
              *          The method should be called with the message and context as arguments.
              **/
-
+            response = ruleBasedEngine.processUserInput(message, context);
 
             return  response;
         }
