@@ -15,11 +15,14 @@ public class CountryInfo {
 
 
     public CountryInfo(String capital, String nationalAnimal, String nationalFlower) {
-        /* TODO 1: In this constructor which takes in the capital, nationalAnimal and nationalFlower
+        /* In this constructor which takes in the capital, nationalAnimal and nationalFlower
          *  as parameters, set the instance variables to the values passed in.
          *  Ensure that the values of nationalAnimal and nationalFlower are set to "Unknown", if nothing
          *  is passed or the values passed is null.
          */
+        this.capital = capital;
+        this.nationalAnimal = nationalAnimal != null ? nationalAnimal : "Unknown";
+        this.nationalFlower = nationalFlower != null ? nationalFlower : "Unknown";
     }
 
 

@@ -29,8 +29,6 @@ public class CountryDataLoader {
 
     private final Map<String, CountryInfo> countryData = new HashMap<>();
 
-
-
     public static CountryDataLoader getInstance() {
 
         // check if the instance has not been created before
@@ -77,7 +75,7 @@ public class CountryDataLoader {
     }
 
 
-    /** TODO 2: create a method to return the return a certain property
+    /** create a method to return the return a certain property
      *          of a country. The country name is passed with the property
      *          name like "USA" and "nationalAnimal". The method should be
      *          named getCountryProperty(String country, String property) and
@@ -87,17 +85,36 @@ public class CountryDataLoader {
      *          If the country is not found, it should return "Country not found".
      *          If the property is not found, it should return "Invalid property".
      **/
+    public String getCountryProperty(String country, String property) {
+        CountryInfo countryInfo = countryData.get(country.toLowerCase());
+        if (countryInfo == null) {
+            return "Country not found";
+        }
+        switch (property) {
+            case "capital":
+                return countryInfo.getCapital();
+            case "nationalAnimal":
+                return countryInfo.getNationalAnimal();
+            case "nationalFlower":
+                return countryInfo.getNationalFlower();
+            default:
+                return "Invalid property";
+        }
+    }
 
 
 
-    /** TODO 3: Create a method to create an array of String objects with each country in the
+    /** Create a method to create an array of String objects with each country in the
      *          array being the name of a country, as available in the HashMap.
      *          The method should be named listAllCountries() and return the array.
      *          The array should be created using the keySet() method of the HashMap.
      **/
+    public String[] listAllCountries() {
+        return countryData.keySet().toArray(new String[0]);
+    }
 
 
-    /** TODO 4: Create a method to create an array of String objects with each country in the
+    /** Create a method to create an array of String objects with each country in the
      *          array being the name of a country, as available in the HashMap
      *          which begins with the String which is passed to the method.
      *          The method should be named listCountriesWhichStartsWith(String).
@@ -105,9 +122,11 @@ public class CountryDataLoader {
      *          The method should use the stream() method of the HashMap to filter the countries
      *          and return the array.
      **/
+    public String[] listCountriesWhichStartsWith(final String startsWith) {
+        return countryData.keySet().stream().filter(country -> country.toLowerCase().startsWith(startsWith.toLowerCase())).toArray(String[]::new);
+    }
 
-
-    /** TODO 5: Create a method to create an array of String objects with each country in the
+    /** Create a method to create an array of String objects with each country in the
      *          array being the name of a country, as available in the HashMap
      *          which ends with the String which is passed to the method.
      *          The method should be named listCountriesWhichEndsWith(String).
@@ -115,6 +134,9 @@ public class CountryDataLoader {
      *          The method should use the stream() method of the HashMap to filter the countries
      *          and return the array.
      **/
+    public String[] listCountriesWhichEndsWith(final String endsWith){
+        return countryData.keySet().stream().filter(country -> country.toLowerCase().endsWith(endsWith.toLowerCase())).toArray(String[]::new);
+    }
 
 
 
