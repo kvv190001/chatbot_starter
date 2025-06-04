@@ -13,21 +13,23 @@ public class ChatbotService {
         this.countryDataLoader.loadCountryData();
     }
 
-    /** TODO 6: Create equivalent service methods to call the
+    /** Create equivalent service methods to call the
      *          following method of the CountryLoader class:
      *          1. getCountryProperty(String, String)
      *        The service method should call its equivalent method in CountryLoaderClass
      *        and return the result. It should have the same name as that in the
      *        CountryLoader class
      **/
-
+    public String getCountryProperty(String country, String property){
+        return countryDataLoader.getCountryProperty(country, property);
+    }
 
 
     public boolean isValidCountry(String country) {
         return countryDataLoader.isValidCountry(country);
     }
 
-    /** TODO 7: Uncomment the three methods below namely:
+    /** Uncomment the three methods below namely:
      *          1. getCapital(String)
      *          2. getNationalAnimal(String)
      *          3. getNationalFlower(String)
@@ -41,7 +43,6 @@ public class ChatbotService {
      *          and return the result.
      */
 
-    /*
     public String getCapital(String country) {
         return countryDataLoader.getCountryProperty(country, "capital");
     }
@@ -53,7 +54,5 @@ public class ChatbotService {
     public String getNationalFlower(String country) {
         return countryDataLoader.getCountryProperty(country, "nationalFlower");
     }
-
-    */
 
 }
